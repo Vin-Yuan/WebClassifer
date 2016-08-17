@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+        <script type="text/javascript" src="./static/lib/js/jquery.min.js"></script>
+        <script type="text/javascript" src="./static/lib/js/d3.js"></script>
+        <script type="text/javascript" src="./static/lib/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./static/js/custom.js"></script>
+        <link href="./static/lib/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+    <div class="container">
+        {% if config_file %}
+           <li> config file : {{config_file}}</li>
+        {% endif %}
+        <table class="table">
+            <tbody>
+            {% if config_info %}
+                {% for key, value in config_info.iteritems() %}
+                    <tr class="success">
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+
+
+        
+    </div>
+    </body>
+</html>
