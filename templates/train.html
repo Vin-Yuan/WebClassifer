@@ -25,9 +25,22 @@
             {% endif %}
             </tbody>
         </table>
-
-
-        
+        <div class="row">
+        <form class="form-inline" enctype="multipart/form-data" role="form" method="post" action="/config">
+            <div class="row panel panel-info">
+                <h2 class= "panel-heading">Train Set</h2>
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <label for="epoch_num">epoch_num</label>
+                        <input type="text" id="epoch_num" name="epoch_num">
+                    </div>
+                    <div class="row form-group">
+                        <label for="batch_size">batch size</label>
+                        <input type="text" id="baatch_size" name="batch_size">
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     </body>
 </html>

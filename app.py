@@ -86,10 +86,13 @@ def get_config_data():
         return redirect(url_for('train_model'))
         #return redirect(url_for('.train_model', config_file=config_file))
 
-@app.route("/train", methods = ['GET'])
+@app.route("/train", methods = ['GET', 'POST'])
 def train_model():
     config_file = session['config_file']
     config_info = session['config_info']
     return render_template('train.html', config_file=config_file, config_info=config_info)
+@app.route("/train/progress", methods = ['GET'])
+def train_progress():
+    pass 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=5001,debug=True)
