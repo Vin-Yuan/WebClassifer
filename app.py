@@ -1,10 +1,11 @@
-from flask import Flask, request, redirect, render_template, url_for, session, flash
+from flask import Flask, request, Response,  redirect, render_template, url_for, session, flash
 from werkzeug.utils import secure_filename
 import ConfigParser
 import json
+import time
 import os
 import ipdb
-from train_dev import Net
+#from train_dev import Net
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
@@ -90,9 +91,11 @@ def get_config_data():
 def train_model():
     config_file = session['config_file']
     config_info = session['config_info']
-    return render_template('train.html', config_file=config_file, config_info=config_info)
-@app.route("/train/progress", methods = ['GET'])
-def train_progress():
-    pass 
+    if request.method == 'GET':
+        return render_template('train.html', config_file=config_file, config_info=config_info)
+    else:
+        epoch_num = int(request.form['epoch_num'])
+        batch_size = int(request.form['batch_size'])
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=5001,debug=True)
+    app.run(host='0.0.0.0',port=5001,  threaded=True)
